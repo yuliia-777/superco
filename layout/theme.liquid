@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="no-js overflow-y-scroll">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    <title>{{ page_title | escape }}</title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% if canonical_url != blank %}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {% endif %}
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    {{ 'main.min.css' | asset_url | stylesheet_tag }}
+  </head>
+
+  <body>
+    {% section 'header' %}
+    <main role="main">
+      {{ content_for_layout }}
+    </main>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/1.1.0/cart.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/1.1.0/rivets-cart.min.js"></script>
+    <script src="{{ 'option_selection.js' | shopify_asset_url }}" defer></script>
+    <script src="{{ 'main.min.js' | asset_url }}" defer="defer"></script>
+    <script>
+      jQuery(function() {
+        CartJS.init({{ cart | json }});
+      });
+    </script>
+  </body>
+</html>

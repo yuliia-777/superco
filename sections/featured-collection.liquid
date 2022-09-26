@@ -1,0 +1,60 @@
+{%- assign section_title = section.settings.title -%}
+{%- assign section_collection = section.settings.collection -%}
+<section class="relative overflow-hidden" data-section-type="featured-collection" data-section-id="{{ section.id }}">
+  <img class="block absolute z-0 inset-0 object-cover" src="{{ 'bg.static.png' | asset_url }}" alt="">
+  <div class="lg:container relative mx-auto px-4 sm:px-10 py-10 text-center">
+    {%- if section_title != blank -%}
+      <h2 class="uppercase mt-8 mb-16 md:my-5">{{ section_title }}</h2>
+    {%- endif -%}
+    <div class="swiper-col">
+      <div class="relative md:grid md:gap-8 md:grid-cols-2 xl:grid-cols-4 swiper-wrapper">
+        {%- for product in section_collection.products -%}
+          <div class="p-4 rounded-xl border-4 border-secondary_bg_2 bg-secondary_bg_3 swiper-slide">
+            {%- render 'card-product', product: product -%}
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="swiper-pagination md:hidden"></div>
+    </div>
+  </div>
+</section>
+
+{% comment %} <script>
+var selectCallback = function(option, selector) {
+  if (option) {
+    if (option.available) {
+      console.log('available')
+    } else {
+      console.log('sold out')
+    }
+    console.log('no variant')
+  }
+}
+new Shopify.OptionSelectors('select', { product: {{ product | json }}, onVariantSelected: selectCallback, enableHistoryState: true });
+</script> {% endcomment %}
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Title",
+      "info": "Use <span></span> wrapper for white last word in mobile"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

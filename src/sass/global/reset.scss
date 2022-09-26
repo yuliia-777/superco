@@ -1,0 +1,65 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a,
+button,
+input {
+  outline: none;
+  line-height: 1;
+  box-shadow: none;
+}
+
+body a.button  {
+  &:not([disabled]):hover {
+    //box-shadow: none;
+  }
+}
+input,
+textarea,
+select {
+  -webkit-appearance: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+}
+
+nav,
+main,
+footer,
+header,
+aside {
+  display: block;
+}

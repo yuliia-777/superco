@@ -1,0 +1,25 @@
+/* FONTS */
+$font-primary: "Filson Pro", Arial, sans-serif;
+$font-secondary: "Filson Pro Heavy", Arial, sans-serif;
+$font-tertiary: "Filson Pro Medium", Arial, sans-serif;
+$font-quaternary: "Filson Pro Light", Arial, sans-serif;
+
+/* COLORS */
+$color_primary: #{'"{{ settings.colors_text  }}"'};
+$color_secondary: #{'"{{ settings.colors_accent_1  }}"'};
+
+$color-text-primary: #{'"{{ settings.colors_text }}"'};
+$color-text-secondary: #595959;
+
+$color-background-primary: #{'"{{ settings.colors_background_1 }}"'};
+$color-background-secondary: #{'"{{ settings.colors_background_2  }}"'};
+
+$color-accent-primary: #{'"{{ settings.colors_accent_1  }}"'};
+$color-accent-secondary: #{'"{{ settings.colors_accent_2  }}"'};
+$color-accent-tertiary: #{'"{{ settings.colors_accent_3  }}"'};
+$color-accent-quaternary: #{'"{{ settings.colors_accent_4  }}"'};
+
+$color-accent-error: #{'"{{ settings.colors_accent_5  }}"'};
+
+/* OTHER STYLES */
+$transition: 0.2s ease-in-out;

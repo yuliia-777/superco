@@ -1,0 +1,53 @@
+{%- if product != empty -%}
+  {%- if product.featured_media -%}
+    <a class="block color-base uppercase mb-5" href="{{ product.url }}">
+      <img
+        src="{{ product.featured_media | product_img_url: "679x" }}"
+        alt="{{ product.featured_media.alt | escape }}"
+        class="w-full h-full rounded-lg object-cover"
+        loading="lazy"
+        width="{{ product.featured_media.width }}"
+        height="{{ product.featured_media.height }}"
+      >
+    </a>
+  {%- endif -%}
+  <div>
+    <h4 class="text-3xl mb-5">
+      <a href="{{ product.url }}" class="">{{ product.title | escape }}</a>
+    </h4>
+    <form id="product-form" method="post" action="/cart/add" data-cart-submit enctype="multipart/form-data">
+      {%- unless product.has_only_default_variant -%}
+        <variant-selects class="w-full mb-6" data-section="{{ section.id }}" data-url="{{ product.url }}">
+          {%- for option in product.options_with_values -%}
+            <div class="relative mb-6 pb-2 border-b border-secondary_bg_2 bg-secondary_bg_3">
+              <select id="Option-{{ section.id }}-{{ forloop.index0 }}" class="relative w-full bg-transparent focus-visible:outline-none text-lg font-medium cursor-pointer z-[2]">
+                {%- for value in option.values -%}
+                  <option value="{{ value }}"
+                    {% if option.selected_value == value %}
+                      selected="selected"
+                    {% endif %}
+                  >
+                    {{ value }}
+                  </option>
+                {%- endfor -%}
+              </select>
+              <svg class="absolute top-2 right-0 z-0" width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L9.5 8L18 1" stroke="#242323" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          {%- endfor -%}
+        </variant-selects>
+      {%- endunless -%}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+      <button type="submit" name="add" id="add" class="w-full p-2.5 rounded-sm border-2 border-base bg-primary_main_1"{% if product.selected_or_first_available_variant.available == false %} disabled{% endif %}>
+        <span class="text-sm font-medium uppercase">
+          {%- if product.selected_or_first_available_variant.available == true -%}
+            {{ product.selected_or_first_available_variant.price | money_with_currency }} | {{ 'action.add_to_cart' | t }}
+          {%- else -%}
+            {{ 'common.sold_out' | t }}
+          {%- endif -%}
+        </span>
+      </button>
+    </form>
+  </div>
+{%- endif -%}

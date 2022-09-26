@@ -1,0 +1,21 @@
+@mixin font($font_name, $file_name, $weight, $style) {
+  @font-face {
+    font-family: $font_name;
+    font-display: swap;
+    src: url(#{'"{{ "#{$file_name}.woff2" | asset_url }}"'}) format("woff2"),
+      url(#{'"{{ "#{$file_name}.woff" | asset_url }}"'}) format("woff");
+    font-weight: #{$weight};
+    font-style: #{$style};
+  }
+}
+
+@include font("Filson Pro Heavy", FilsonPro-Heavy, 800, normal);
+
+@include font("Filson Pro", FilsonPro-Bold, 700, normal);
+@include font("Filson Pro", FilsonPro-Regular, 400, normal);
+
+@include font("Filson Pro Medium", FilsonPro-Medium, 400, normal);
+
+@include font("Filson Pro Book", FilsonPro-Book, 400, normal);
+
+@include font("Filson Pro Light", FilsonPro-Light, 400, normal);
