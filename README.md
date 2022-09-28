@@ -1,5 +1,5 @@
-# shopify_fc
-[Live theme](https://www.shopflavcity.com/)
+# superco
+<!-- [Live theme](https://www.shopflavcity.com/) -->
 
 ***
 

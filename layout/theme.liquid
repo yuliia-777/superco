@@ -18,23 +18,29 @@
     {% endif %}
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    {{ 'main.min.css' | asset_url | stylesheet_tag }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    {{ 'gulp-main.css' | asset_url | stylesheet_tag }}
+    {%- if template.name == 'index' -%}
+      {{ 'gulp-index.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
   </head>
 
   <body>
-    {% section 'header' %}
+    {{ content_for_header }}
     <main role="main">
       {{ content_for_layout }}
     </main>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    {{ 'option_selection.js' | shopify_asset_url | script_tag }}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/1.1.0/cart.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/1.1.0/rivets-cart.min.js"></script>
-    <script src="{{ 'option_selection.js' | shopify_asset_url }}" defer></script>
-    <script src="{{ 'main.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'gulp-index.js' | asset_url }}" defer="defer"></script>
     <script>
       jQuery(function() {
         CartJS.init({{ cart | json }});
+        console.log({{ cart | json }});
       });
     </script>
   </body>

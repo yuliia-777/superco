@@ -1,14 +1,120 @@
 {
   "sections": {
-    "16639511111b7c4769": {
-      "type": "featured-collection",
+    "1664205013698d749d": {
+      "type": "content-cards",
+      "blocks": {
+        "9738c7d3-3c14-4f28-86e7-852466ca0e0e": {
+          "type": "image",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/Rectangle_91.jpg",
+            "card_title": "Make a scene.",
+            "card_text": "Everything you need for a great party, from decor to drinks and games.",
+            "card_bg_color": "#00966e",
+            "cta_url": "#",
+            "cta_text": "find your scene"
+          }
+        },
+        "e8bbc027-8690-4789-828a-52c32106df43": {
+          "type": "image",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/Rectangle_92.jpg",
+            "card_title": "Make it extra.",
+            "card_text": "Once you’ve chosen a scene, you can dial it up with fun a la carte add-ons.",
+            "card_bg_color": "#85abbd",
+            "cta_url": "#",
+            "cta_text": "shop party supplies"
+          }
+        },
+        "7c3b82bc-9bbe-4c0a-b557-ec0f7a7c00ff": {
+          "type": "image",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/Rectangle_2891.jpg",
+            "card_title": "Make it joyful.",
+            "card_text": "Create the arrangement of your dreams with DIY kits from Wild & Flowers.",
+            "card_bg_color": "#e3ff21",
+            "cta_url": "#",
+            "cta_text": "shop florals"
+          }
+        },
+        "529a60bd-96f3-4870-89c1-f318d4d37e2f": {
+          "type": "image",
+          "settings": {
+            "card_image": "shopify:\/\/shop_images\/Rectangle_2892.jpg",
+            "card_title": "Make it happen.",
+            "card_text": "Need a bartender, caterer, or DJ? Just add to cart. It’s that easy.",
+            "card_bg_color": "#bf91c4",
+            "cta_url": "#",
+            "cta_text": "browse vendors"
+          }
+        }
+      },
+      "block_order": [
+        "9738c7d3-3c14-4f28-86e7-852466ca0e0e",
+        "e8bbc027-8690-4789-828a-52c32106df43",
+        "7c3b82bc-9bbe-4c0a-b557-ec0f7a7c00ff",
+        "529a60bd-96f3-4870-89c1-f318d4d37e2f"
+      ],
       "settings": {
-        "title": "Our best <span>sellers<\/span>",
-        "collection": "our-best-sellers"
+        "title": "HAVING FUN 101"
+      }
+    },
+    "16642050189fa4f42a": {
+      "type": "featured-products",
+      "blocks": {
+        "8df632d0-9439-47ee-82a2-fd6c90c43526": {
+          "type": "product",
+          "settings": {
+            "product": "classic-barware"
+          }
+        },
+        "4fda50bb-9616-482d-b1ab-09d145a2433f": {
+          "type": "product",
+          "settings": {
+            "product": "colored-wine-glasses"
+          }
+        },
+        "68e44293-c530-4e2b-a254-eb2dc6cdf21e": {
+          "type": "product",
+          "settings": {
+            "product": "figlia-aperitivo"
+          }
+        },
+        "b8df1dfc-fd9e-43dc-88c5-d7635b8f1418": {
+          "type": "product",
+          "settings": {
+            "product": "classic-barware"
+          }
+        },
+        "639988b6-701d-48b4-8dc1-0fb596bbdb9a": {
+          "type": "product",
+          "settings": {
+            "product": "colored-wine-glasses"
+          }
+        },
+        "ce4d8622-edcf-4b1d-bf60-cf9530e6dc41": {
+          "type": "product",
+          "settings": {
+            "product": "figlia-aperitivo"
+          }
+        }
+      },
+      "block_order": [
+        "8df632d0-9439-47ee-82a2-fd6c90c43526",
+        "4fda50bb-9616-482d-b1ab-09d145a2433f",
+        "68e44293-c530-4e2b-a254-eb2dc6cdf21e",
+        "b8df1dfc-fd9e-43dc-88c5-d7635b8f1418",
+        "639988b6-701d-48b4-8dc1-0fb596bbdb9a",
+        "ce4d8622-edcf-4b1d-bf60-cf9530e6dc41"
+      ],
+      "settings": {
+        "title": "PARTY A LA CARTE",
+        "cta_url": "#",
+        "cta_text": "Shop All"
       }
     }
   },
   "order": [
-    "16639511111b7c4769"
+    "1664205013698d749d",
+    "16642050189fa4f42a"
   ]
 }

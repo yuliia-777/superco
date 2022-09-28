@@ -9,13 +9,9 @@
   }
 }
 
-@include font("Filson Pro Heavy", FilsonPro-Heavy, 800, normal);
+@include font("GT Super Text", GT-Super-Text-Book, 400, normal);
 
-@include font("Filson Pro", FilsonPro-Bold, 700, normal);
-@include font("Filson Pro", FilsonPro-Regular, 400, normal);
+@include font("GT Super Display", GT-Super-Display-Light, 300, normal);
+@include font("GT Super Display Italic", GT-Super-Display-Light-Italic, 300, italic);
 
-@include font("Filson Pro Medium", FilsonPro-Medium, 400, normal);
-
-@include font("Filson Pro Book", FilsonPro-Book, 400, normal);
-
-@include font("Filson Pro Light", FilsonPro-Light, 400, normal);
+@include font("Platform", Platform-Medium-Web, 500, normal);

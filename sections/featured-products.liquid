@@ -1,0 +1,149 @@
+{%- assign section_title = section.settings.title -%}
+{%- assign cta_url       = section.settings.cta_url -%}
+{%- assign cta_text      = section.settings.cta_text -%}
+
+<section class="section-spaced" data-section-type="featured-products" data-section-id="{{ section.id }}">
+  <div class="container">
+
+    {%- if section_title != blank -%}
+      <h2 class="title">{{ section_title }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="swiper-container">
+        <div class="swiper-products">
+          <div class="products swiper-wrapper">
+            {%- for block in section.blocks -%}
+
+              {%- assign product = block.settings.product -%}
+
+              <form id="product-form" class="product swiper-slide" action="/cart/add" method="post">
+                <div id="product" product-handle="{{ product.handle }}">
+                  <div class="product_image">
+                    <img src="{{ product.featured_image | img_url: '540x' }}" alt="">
+                  </div>
+                  <div class="product_content">
+                    <h5 class="product_title">{{ product.title }}</h5>
+                    <div class="product_price link">
+                      <p>{{ product.price | money_without_trailing_zeros }}</p>
+                    </div>
+                  </div>
+                </div>
+                <input id="product-id" type="hidden" name="id" value="">
+                <button class="hidden" type="submit"></button>
+              </form>
+                
+            {%- endfor -%}
+          </div>
+        </div>
+        <div class="swiper-button swiper-button-prev">{%- render 'icons', icon: 'arrow_right' -%}</div>
+        <div class="swiper-button swiper-button-next">{%- render 'icons', icon: 'arrow_right' -%}</div>
+      </div>
+    {%- endif -%}
+
+    {%- if cta_url != blank -%}
+      <div class="products-link">
+        <a class="link" href="{{ cta_url }}">{{ cta_text }}</a>
+      </div>  
+    {%- endif -%}
+
+  </div>
+</section>
+
+<script>
+var form = document.querySelector('#product-form');
+var products = document.querySelectorAll('#product');
+
+products.forEach(item => {
+  item.addEventListener('click', event => {
+    var url = '/products/' + item.getAttribute("product-handle") + '.js';
+    fetch(url)
+      .then(resp => resp.json())
+      .then(function(data) {
+        document.getElementById('product-id').value = data.variants[0].id;
+    });
+
+    setTimeout(function() {
+      form.submit();
+      console.log({{ cart | json }});
+    }, 500)
+  })
+})
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault;
+  let formData = {
+    'items': [
+      {
+        'id': document.getElementById('product-id').value,
+        'quantity': 1
+      }
+    ]
+  };
+  fetch(window.Shopify.routes.root + 'cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+    .then(resp => resp.json())
+    .catch(err => {
+      console.log('Error: ' + err);
+  })
+})
+</script>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "PARTY A LA CARTE"
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Shop All"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products",
+      "category": "Products",
+      "blocks": [
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

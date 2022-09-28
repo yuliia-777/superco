@@ -1,0 +1,119 @@
+{%- assign section_title = section.settings.title -%}
+
+<section class="section-spaced" data-section-type="content-cards" data-section-id="{{ section.id }}">
+  <div class="container">
+
+    {%- if section_title != blank -%}
+      <h2 class="title">{{ section_title }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="swiper-cards">
+        <div class="cards swiper-wrapper">
+          {%- for block in section.blocks -%}
+
+            {%- assign card_image    = block.settings.card_image -%}
+            {%- assign card_title    = block.settings.card_title -%}
+            {%- assign card_text     = block.settings.card_text -%}
+            {%- assign card_bg_color = block.settings.card_bg_color -%}
+            {%- assign cta_url       = block.settings.cta_url -%}
+            {%- assign cta_text      = block.settings.cta_text -%}
+
+            <div class="card swiper-slide" style="background-color:{{card_bg_color}};">
+              {%- if card_image != blank -%}
+                <div class="card_image">
+                  <img src="{{ card_image | img_url: '646x' }}" alt="">
+                </div>
+              {%- endif -%}
+              {%- if card_title != blank -%}
+                <h5 class="card_title">{{ card_title }}</h5>
+              {%- endif -%}
+              {%- if card_text != blank -%}
+                <div class="card_text">
+                  <p>{{ card_text }}</p>
+                </div>
+              {%- endif -%}
+              {%- if cta_url != blank -%}
+                <a class="link" href="{{ cta_url }}">{{ cta_text }}</a>
+              {%- endif -%}
+            </div>
+
+          {%- endfor -%}
+        </div>
+        <div class="swiper-button swiper-button-prev">{%- render 'icons', icon: 'arrow_right' -%}</div>
+        <div class="swiper-button swiper-button-next">{%- render 'icons', icon: 'arrow_right' -%}</div>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Content Cards",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "HAVING FUN 101"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "card_bg_color",
+          "label": "Card background color"
+        },
+        {
+          "type": "header",
+          "content": "Call to action"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "Button link"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "Button text",
+          "default": "Shop"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Content Cards",
+      "category": "Cards",
+      "blocks": [
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
